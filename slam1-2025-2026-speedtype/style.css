@@ -1,0 +1,377 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    width: 100%;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+/* Configuration et démarrage */
+#game-setup {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+#game-setup label {
+    font-weight: bold;
+}
+
+#game-setup select {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+#btn-start {
+    padding: 8px 20px;
+    background-color: #2ecc71;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#btn-start:hover {
+    background-color: #27ae60;
+}
+
+/* Chronomètre */
+#timer {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+/* Zone d'affichage des mots */
+#words-display {
+    background-color: #ecf0f1;
+    padding: 20px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    min-height: 80px;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #2c3e50;
+}
+
+/* Zone de saisie */
+#text-input {
+    width: 100%;
+    height: 100px;
+    padding: 15px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    resize: none;
+    margin-bottom: 20px;
+    transition: border-color 0.2s;
+}
+
+#text-input:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+#text-input.error {
+    border-color: #e74c3c;
+}
+
+#text-input:disabled {
+    background-color: #eee;
+    cursor: not-allowed;
+}
+
+/* Résultats */
+#results {
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #eafaf1;
+    border-radius: 4px;
+}
+
+#results h2 {
+    margin-bottom: 10px;
+    color: #27ae60;
+}
+
+#results p {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+#results span {
+    font-weight: bold;
+}
+
+#save-score {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+#pseudo {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 200px;
+}
+
+#btn-save {
+    padding: 8px 20px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#btn-save:hover {
+    background-color: #2980b9;
+}
+
+/* Boutons bas de page */
+#bottom-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+#btn-scores,
+#btn-add-paragraph {
+    padding: 10px 24px;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#btn-scores {
+    background-color: #8e44ad;
+}
+
+#btn-scores:hover {
+    background-color: #7d3c98;
+}
+
+#btn-add-paragraph {
+    background-color: #e67e22;
+}
+
+#btn-add-paragraph:hover {
+    background-color: #d35400;
+}
+
+/* Modale ajout paragraphe (dialog) */
+#modal-paragraph {
+    border: none;
+    border-radius: 8px;
+    padding: 30px;
+    max-width: 500px;
+    width: 90%;
+    margin: auto;
+    position: relative;
+}
+
+#modal-paragraph::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#modal-paragraph h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+#modal-paragraph-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    cursor: pointer;
+    color: #999;
+}
+
+#modal-paragraph-close:hover {
+    color: #333;
+}
+
+#form-paragraph {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#form-paragraph label {
+    font-weight: bold;
+}
+
+#paragraph-content {
+    width: 100%;
+    height: 120px;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+#btn-submit-paragraph {
+    padding: 10px 20px;
+    background-color: #e67e22;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    align-self: flex-end;
+}
+
+#btn-submit-paragraph:hover {
+    background-color: #d35400;
+}
+
+/* Modale scores (dialog) */
+#modal-scores {
+    border: none;
+    border-radius: 8px;
+    padding: 30px;
+    max-width: 700px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    margin: auto;
+}
+
+#modal-scores::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#modal-scores h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+#modal-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    cursor: pointer;
+    color: #999;
+}
+
+#modal-close:hover {
+    color: #333;
+}
+
+/* Filtre des scores */
+#scores-filter {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+#scores-filter label {
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+#scores-period {
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+/* Tableau des scores */
+#scores-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+}
+
+#scores-table th,
+#scores-table td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+#scores-table th {
+    background-color: #8e44ad;
+    color: #fff;
+}
+
+#scores-table tbody tr:hover {
+    background-color: #f5f5f5;
+}
+
+/* Pagination */
+#pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+#pagination button {
+    padding: 6px 14px;
+    background-color: #8e44ad;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+#pagination button:hover {
+    background-color: #7d3c98;
+}
+
+#pagination button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+#page-info {
+    font-weight: bold;
+}
+
+/* Utilitaires */
+.hidden {
+    display: none !important;
+}

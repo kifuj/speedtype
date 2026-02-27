@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpeedType</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>SpeedType</h1>
+
+        <!-- Zone de configuration et démarrage -->
+        <div id="game-setup">
+            <label for="duration">Durée :</label>
+            <select id="duration">
+                <option value="15">15 secondes</option>
+                <option value="30">30 secondes</option>
+                <option value="60" selected>60 secondes</option>
+                <option value="120">120 secondes</option>
+            </select>
+            <button id="btn-start">Démarrer</button>
+        </div>
+
+        <!-- Chronomètre -->
+        <div id="timer">Temps restant : <span id="time-left">--</span>s</div>
+
+        <!-- Zone d'affichage des mots à taper -->
+        <div id="words-display"></div>
+
+        <!-- Zone de saisie -->
+        <textarea id="text-input" placeholder="Commencez à taper ici..." disabled></textarea>
+
+        <!-- Résultats -->
+        <div id="results" class="hidden">
+            <h2>Résultats</h2>
+            <p>Mots corrects : <span id="correct-words">0</span></p>
+            <p>Vitesse : <span id="wpm">0</span> WPM</p>
+
+            <div id="save-score">
+                <input type="text" id="pseudo" placeholder="Votre pseudo">
+                <button id="btn-save">Enregistrer le score</button>
+            </div>
+        </div>
+
+        <!-- Boutons bas de page -->
+        <div id="bottom-actions">
+            <button id="btn-scores">Voir les meilleurs scores</button>
+            <button id="btn-add-paragraph">Ajouter un paragraphe</button>
+        </div>
+
+        <!-- Modale d'ajout de paragraphe -->
+        <dialog id="modal-paragraph">
+            <span id="modal-paragraph-close">&times;</span>
+            <h2>Ajouter un paragraphe</h2>
+            <form id="form-paragraph">
+                <label for="paragraph-content">Contenu du paragraphe :</label>
+                <textarea id="paragraph-content" placeholder="Saisissez le texte du paragraphe..." required></textarea>
+                <button type="submit" id="btn-submit-paragraph">Envoyer</button>
+            </form>
+        </dialog>
+
+        <!-- Modale des scores -->
+        <dialog id="modal-scores">
+            <span id="modal-close">&times;</span>
+            <h2>Meilleurs scores</h2>
+
+            <div id="scores-filter">
+                <label for="scores-period">Période :</label>
+                <select id="scores-period">
+                    <option value="day">Aujourd'hui</option>
+                    <option value="week">Cette semaine</option>
+                    <option value="year">Cette année</option>
+                    <option value="all">Tous les temps</option>
+                </select>
+            </div>
+
+            <table id="scores-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Pseudo</th>
+                        <th>WPM</th>
+                        <th>Durée</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody id="scores-body">
+                </tbody>
+            </table>
+
+            <div id="pagination">
+                <button id="btn-prev" disabled>&laquo; Précédent</button>
+                <span id="page-info">Page 1</span>
+                <button id="btn-next">Suivant &raquo;</button>
+            </div>
+        </dialog>
+    </div>
+</body>
+</html>
